@@ -1,1 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2>My Library</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.title.label }}<br>
+            {{ form.title(size=32) }}<br>
+            {% for error in form.title.errors %}
+                <span class="text-danger">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.artist.label }}<br>
+            {{ form.artist(size=32) }}<br>
+            {% for error in form.artist.errors %}
+                <span class="text-danger">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.album.label }}<br>
+            {{ form.album(size=32) }}<br>
+            {% for error in form.album.errors %}
+                <span class="text-danger">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.genre.label }}<br>
+            {{ form.genre(size=32) }}<br>
+            {% for error in form.genre.errors %}
+                <span class="text-danger">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">Add Song</button>
+    </form>
+    <hr>
+    <h3>Saved Songs</h3>
+    <ul>
+        {% for song in songs %}
+        <li>{{ song.title }} by {{ song.artist }} ({{ song.album }})</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
 
