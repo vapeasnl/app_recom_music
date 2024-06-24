@@ -1,1 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1>Welcome to My Music App</h1>
+    <p>Get personalized music recommendations based on your mood, genre preferences, and generation.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('auth.register') }}" role="button">Sign Up</a>
+</div>
+{% endblock %}
 
