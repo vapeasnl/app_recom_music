@@ -38,3 +38,14 @@ class RecommendationForm(FlaskForm):
     generation = SelectField('Generation', choices=[('60s', '60s'), ('70s', '70s'), ('80s', '80s'), ('90s', '90s')])
     submit = SubmitField('Get Recommendation')
 
+class SongForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    artist = StringField('Artist', validators=[DataRequired()])
+    album = StringField('Album', validators=[DataRequired()])
+    genre = StringField('Genre')
+    submit = SubmitField('Add Song')
+
+class PostForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired(), Length(min=2, max=100)])
+    content = TextAreaField('Content', validators=[DataRequired()])
+    submit = SubmitField('Post')
