@@ -1,1 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Blog</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.title.label }}<br>
+            {{ form.title(size=32) }}<br>
+            {% for error in form.title.errors %}
+                <span class="text-danger">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            {{ form.content.label }}<br>
+            {{ form.content(cols=40, rows=5) }}<br>
+            {% for error in form.content.errors %}
+                <span class="text-danger">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+    <hr>
+    <h3>Posts</h3>
+    <ul>
+        {% for post in posts %}
+        <li><strong>{{ post.title }}</strong> by {{ post.author.username }} on {{ post.date_posted.strftime('%Y-%m-%d') }}<br>{{ post.content }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
 
