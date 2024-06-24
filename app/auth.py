@@ -1,8 +1,8 @@
-from flask import Blueprint, render_template, url_for, flash, redirect
+from flask import Blueprint, render_template, redirect, url_for, flash, request
+from flask_login import login_user, current_user, logout_user, login_required
 from app import db, bcrypt
 from app.forms import RegistrationForm, LoginForm
 from app.models import User
-from flask_login import login_user, current_user, logout_user, login_required
 
 auth = Blueprint('auth', __name__)
 
@@ -39,4 +39,3 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('main.home'))
-
